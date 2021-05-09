@@ -1,0 +1,46 @@
+<h1>Hello, Rails</h1>
+
+<% if false %>
+Controller instance variables can be accessed by the view. That means we can 
+reference @articles in app/views/articles/index.html.erb
+
+<%%> and <%=%> are ERB tags
+<% %> tag means "evaluate the enclosed Ruby code."
+The <%= %> tag means "evaluate the enclosed Ruby code, and output the value 
+it returns."
+Anything you could write in a regular Ruby program can go inside these ERB 
+tags, though it's usually best to keep the contents of ERB tags short, 
+for readability.
+
+The resources method also sets up URL and path helper methods that we can use 
+to keep our code from depending on a specific route configuration. The values 
+in the "Prefix" column when, "rails routes" is run, plus a suffix of _url or 
+_path form the names of these helpers. For example, the article_path helper 
+returns  "/articles/#{article.id}" when given an article. We can use it to 
+tidy up our links in app/views/articles/index.html.erb:
+
+From:
+    <a href = "/articles/<%=article.id %>"> <%= article.title %> </a>
+
+To:
+    <a href = "/articles/<%=article_path(article) %>"> 
+        <%= article.title %> 
+    </a>
+
+However, we will take this one step further by using the link_to helper. 
+The link_to helper renders a link with its first argument as the link's text 
+and its second argument as the link's destination. If we pass a model object 
+as the second argument, link_to will call the appropriate path helper to 
+convert the object to a path. For example, if we pass an article, link_to will 
+call article_path. So app/views/articles/index.html.erb becomes:
+
+<%= link_to article.title, article %>
+<% end %>
+
+<ul>
+    <% @articles .each do |article| %>
+        <li>
+            <%= link_to article.title, article%>
+        </li>
+    <% end %>
+</ul>
