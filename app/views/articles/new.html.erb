@@ -1,5 +1,15 @@
 <h1>New Article</h1>
 
+<%= render "form", article: @article %>
+
+<% if false %>
+A partial's filename must be prefixed with an underscore, e.g. _form.html.erb. 
+But when rendering, it is referenced without the underscore, e.g. render "form".
+<% end %>
+
+<% if false %>
+DEPRECATED, old code since use of partial file _form.html.erb.\
+
 <%= form_with model: @article do |form| %>
     <div>
         <%= form.label :title %><br>
@@ -25,8 +35,11 @@
         <%= form.submit %>
     </div>
 <% end %>
+<% end %>
 
 <% if false %>
+NOTES
+
 Submitted form data is put into the params Hash, alongside captured route 
 parameters. Thus, the create action can access the submitted title via 
 params[:article][:title] and the submitted body via params[:article][:body]. 
