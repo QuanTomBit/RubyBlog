@@ -1,0 +1,42 @@
+<h1>New Article</h1>
+
+<%= form_with model: @article do |form| %>
+    <div>
+        <%= form.label :title %><br>
+        <%= form.text_field :title %>
+        <%= @article.errors.full_messages_for(:title).each do |message| %>
+            <div><%= message %></div> 
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.label :body %><br>
+        <%= form.text_area :body %>
+        <%= @article.errors.full_messages_for(:body).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.submit %>
+    </div>
+<% end %>
+
+<% if false %>
+Submitted form data is put into the params Hash, alongside captured route 
+parameters. Thus, the create action can access the submitted title via 
+params[:article][:title] and the submitted body via params[:article][:body]. 
+We could pass these values individually to Article.new, but that would be 
+verbose and possibly error-prone. And it would become worse as we add 
+more fields.
+
+Instead, we will pass a single Hash that contains the values. However, we 
+must still specify what values are allowed in that Hash. Otherwise, a 
+malicious user could potentially submit extra form fields and overwrite 
+private data. In fact, if we pass the unfiltered params[:article] Hash 
+directly to Article.new, Rails will raise a ForbiddenAttributesError to alert 
+us about the problem. So we will use a feature of Rails called Strong 
+Parameters to filter params. Think of it as strong typing for params.
+
+See def article_params in controller.
+<% end %>

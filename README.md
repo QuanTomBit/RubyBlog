@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project follows the tutorial found at https://guides.rubyonrails.org/getting_started.html
+to better understand how a Rails application is made.
 
-Things you may want to cover:
+## Fixes for Issues
+#### Webpacker::Manifest::MissingEntryError
+Run the following command:
 
-* Ruby version
+`bundle exec rake assets:precompile`
 
-* System dependencies
+Source: 
+https://stackoverflow.com/questions/52639256/webpackermanifestmissingentryerror
 
-* Configuration
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

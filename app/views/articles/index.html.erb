@@ -1,6 +1,19 @@
 <h1>Hello, Rails</h1>
 
+<ul>
+    <% @articles .each do |article| %>
+        <li>
+            <%= link_to article.title, article%>
+        </li>
+    <% end %>
+</ul>
+
+<%= link_to "New Article", new_article_path %>
+
+
 <% if false %>
+NOTES
+
 Controller instance variables can be accessed by the view. That means we can 
 reference @articles in app/views/articles/index.html.erb
 
@@ -36,11 +49,3 @@ call article_path. So app/views/articles/index.html.erb becomes:
 
 <%= link_to article.title, article %>
 <% end %>
-
-<ul>
-    <% @articles .each do |article| %>
-        <li>
-            <%= link_to article.title, article%>
-        </li>
-    <% end %>
-</ul>
