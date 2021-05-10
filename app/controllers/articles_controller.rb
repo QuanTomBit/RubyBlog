@@ -11,13 +11,12 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
-=begin
-    redirect_to will cause the browser to make a new request, whereas render 
-    renders the specified view for the current request. It is important to use 
-    redirect_to after mutating the database or application state. Otherwise, 
-    if the user refreshes the page, the browser will make the same request, 
-    and the mutation will be repeated.
-=end
+    # redirect_to will cause the browser to make a new request, whereas render 
+    # renders the specified view for the current request. It is important to use 
+    # redirect_to after mutating the database or application state. Otherwise, 
+    # if the user refreshes the page, the browser will make the same request, 
+    # and the mutation will be repeated.
+
   def create
     @article = Article.new(article_params)
 
@@ -51,6 +50,6 @@ class ArticlesController < ApplicationController
 
   private
     def article_params
-      params.require(:article).permit(:title, :body)
+      params.require(:article).permit(:title, :body, :status)
     end
 end

@@ -21,6 +21,14 @@
     <br>
 
     <div>
+        <%= form.label :status %> <br>
+        <%= form.select :status, ['public', 'private', 'archived'], 
+            selected: 'public' %>
+    </div>
+
+    <br>
+
+    <div>
         <%= form.submit %>
     </div>
 <% end %>
